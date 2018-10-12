@@ -24,11 +24,60 @@
             <!-- <div> 
             Home Page
              </div> -->
-            <!-- <div>
-            Store
-            </div> -->
+            <div class="store-content" id="store">
+                <div class="store-header">
+                    <h2>Available Items</h2>
+                </div>
+                <div class="store-items">
+
+                    <ul>
+                        <!-- Should be moved to a template -->
+                        <li class="card col-3">
+                            <p class="title">Saitama</p>
+                            <img class="item-pic" alt="costume pic">
+                            <P class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo
+                                ullamcorper. Adipiscing diam donec adipiscing tristique risus nec.</P>
+                            <p class="cost-rent">
+                                <p>$40.00 USD</p>
+                                <!-- Button should add item to cart; 
+                                            maybe other functionalities of button present later(relating to checkout probably);
+                                        button tooltip should update as stock goes down; says none in stock when 0 items are in stock;
+                                    *tooltip doesn't work when button is disabled* -->
+                                <button title="5 left in stock" class="rent-button">Rent</button>
+
+                        </li>
+                        <li class="card col-3">
+                            <p class="title">Sponge Bob</p>
+                            <img class="item-pic" alt="costume pic">
+                            <P class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo
+                                ullamcorper. Adipiscing diam donec adipiscing tristique risus nec.</P>
+                            <p class="cost-rent">
+                                <p>$40.00 USD</p>
+                                <button title="5 left in stock" class="rent-button">Rent</button>
+                        </li>
+                        <li class="card col-3">
+                            <p class="title">Calculator</p>
+                            <img class="item-pic" alt="costume pic">
+                            <P class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo
+                                ullamcorper. Adipiscing diam donec adipiscing tristique risus nec.</P>
+                            <p class="cost-rent">
+                                <p>$40.00 USD</p>
+                                <button title="5 left in stock" class="rent-button">Rent</button>
+                            </p>
+                        </li>
+                        <!-- store items should wrap around its ul container every 3 items on full desktops
+                            store items should wrap around its ul container every 1 item on small screens -->
+                        <!-- ...<li>Rest of content<li> -->
+                    </ul>
+
+                </div>
+            </div>
         </div>
     </main>
+
 </body>
 
 </html>
