@@ -9,6 +9,7 @@
         crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/handlebars.js" defer></script>
     <script src="js/data.js" defer></script>
     <script src="js/javascript.js" defer></script>
     <title>Rental Store</title>
@@ -58,49 +59,6 @@
 
                         <ul class="d-flex flex-wrap p-0">
                             <!-- Should be moved to a template -->
-                            <li class="card col-lg-4 col-sm-12 col-md-6 p-4">
-                                <!-- Make sure to change bottom/top margin on small screens for better viewing(or change margin on item name) -->
-                                <p class="title mx-auto">Saitama</p>
-                                <img class="item-pic mx-auto" alt="costume pic">
-                                <P class="desc mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo
-                                    ullamcorper. Adipiscing diam donec adipiscing tristique risus nec.</P>
-                                <p class="cost-rent">
-                                    <p>$40.00 USD</p>
-                                    <!-- Button should add item to cart; 
-                                            maybe other functionalities of button present later(relating to checkout probably);
-                                        button tooltip should update as stock goes down; says none in stock when 0 items are in stock;
-                                    *tooltip doesn't work when button is disabled* -->
-                                    <button title="5 left in stock" class="rent-button">Rent</button>
-                                </p>
-
-                            </li>
-
-                            <li class="card col-lg-4 col-sm-12 col-md-6 mx-auto">
-                                <p class="title">Sponge Bob</p>
-                                <img class="item-pic" alt="costume pic">
-                                <P class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor inciidunt ut labore et dolore magna aliqua. Dictum at tempor commodo
-                                    ullamcorper. Adipiscing diam donec adipiscing tristique risus nec.</P>
-                                <p class="cost-rent">
-                                    <p>$40.00 USD</p>
-                                    <button title="5 left in stock" class="rent-button">Rent</button>
-                            </li>
-                            <li class="card col-lg-4 col-sm-12 col-md-6 mx-auto">
-                                <p class="title">Calculator</p>
-                                <img class="item-pic" alt="costume pic">
-                                <P class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo
-                                    ullamcorper. Adipiscing diam donec adipiscing tristique risus nec.</P>
-                                <p class="cost-rent">
-                                    <p>$40.00 USD</p>
-                                    <button title="5 left in stock" class="rent-button">Rent</button>
-                                </p>
-                            </li>
-                            <!-- store items should wrap around its ul container every 3 items on full desktops
-                            store items should wrap around its ul container every 1 item on small screens -->
-                            <!-- ...<li>Rest of content<li> -->
                         </ul>
 
                     </div>
@@ -109,6 +67,24 @@
         </div>
     </main>
 
+    <script id="store-item-temp" type="text/x-handlebars-template">
+        {{#each this}}
+        <li class="card col-lg-4 col-sm-12 col-md-6 p-4">
+            <!-- Make sure to change bottom/top margin on small screens for better viewing(or change margin on item name) -->
+            <p class="title mx-auto">{{name}}</p>
+            <img class="item-pic mx-auto" alt="costume pic">
+            <p class="desc mt-4">{{description}}</p>
+            <p class="cost-rent">
+                <p>${{price}}</p>
+                <!-- Button should remove 1 from the item stock and Button should add item to cart; 
+                        maybe other functionalities of button present later(relating to checkout probably);
+                    button tooltip should update as stock goes down; says none in stock when 0 items are in stock;
+                *tooltip doesn't work when button is disabled* -->
+                <button title="{{stock}} left in stock" class="rent-button">Rent</button>
+            </p>
+        </li>
+        {{/each}}
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
