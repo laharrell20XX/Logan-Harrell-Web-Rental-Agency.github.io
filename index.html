@@ -81,7 +81,12 @@
                         maybe other functionalities of button present later(relating to checkout probably);
                     button tooltip should update as stock goes down; says none in stock when 0 items are in stock;
                 *tooltip doesn't work when button is disabled* -->
-                <button title="{{stock}} left in stock" class="{{name}}-rental-button rent-button">Rent</button>
+                {{#if stock}}
+                <button type="button" title="{{stock}} left in stock" class="{{name}}-rental-button rent-button">Rent</button>
+                {{else}}
+                <button type="button" title="{{stock}} left in stock" class="{{name}}-rental-button rent-button" disabled>Cannot Rent</button>
+                <p class="mt-4 not-in-stock mb-2 text-danger">There are no more items left in stock to rent</p>
+                {{/if}}
             </p>
         </li>
         {{/each}}
