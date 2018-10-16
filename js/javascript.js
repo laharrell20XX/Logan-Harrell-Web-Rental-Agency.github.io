@@ -1,5 +1,6 @@
 var listOfItems = PAGE_DATA.storeItems;
 renderItemTemp();
+
 // helper function to find the right object based on the name of the event being added to
 
 function getObjByName(list, button) {
@@ -30,7 +31,6 @@ function addEvent(listElm) {
     var button = listElm.querySelector("button"); // turned buttons and object into set vars instead of reassigning them
     var object = getObjByName(listOfItems, button);
     button.addEventListener("click", function() {
-        console.log("button clicked");
         rentItem(object);
         renderItemTemp(); // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
     });
