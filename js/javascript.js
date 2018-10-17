@@ -27,14 +27,14 @@ function clearTemp(element) {
     }
 }
 
-function addEvent(listElm) {
+function addEvents(listElm) {
     var button = listElm.querySelector("button");
-    var form = listElm.querySelector(".dropdown-form"); // turned buttons and object into set vars instead of reassigning them
+    var formContainer = listElm.querySelector(".dropdown-form"); // turned buttons and object into set vars instead of reassigning them
     // var object = getObjByName(listOfItems, button);
+    addFormEvents(formContainer.querySelector("form"));
     button.addEventListener("click", function() {
-        closeOtherForms(form);
-        showDropdown(form);
-        // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
+        closeOtherForms(formContainer);
+        showDropdown(formContainer); // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
     });
 }
 
@@ -45,7 +45,7 @@ function rentItem(object) {
 function makeRentButtons() {
     var listElms = document.querySelectorAll("div.store-items li"); //adds events to all rent buttons
     for (listElm of listElms) {
-        addEvent(listElm);
+        addEvents(listElm);
     }
 }
 
@@ -63,4 +63,34 @@ function closeOtherForms(cur_form) {
             shownForm.classList.toggle("hide");
         }
     }
+}
+
+function addFormEvents(form) {
+    formElements = form.elements;
+    nameRegEx = /^[A-Za-z](?=['-]*)(?=[^'-\s0-9]*$)/; // checks for (letter'-(optional)(letter/number))
+    phoneRegEx = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/; //regression statements only work for America
+    formElements["first-name"].addEventListener("input", function(event) {
+        if (nameRegEx.test(event.target.value)) {
+            event.target.setCustomValidity("");
+        } else {
+            event.target.setCustomValidity("Not a valid name");
+        }
+    });
+    formElements["last-name"].addEventListener("input", function(event) {
+        if (nameRegEx.test(event.target.value)) {
+            event.target.setCustomValidity("");
+        } else {
+            event.target.setCustomValidity("Not a valid name");
+        }
+    });
+    formElements["phone"].addEventListener("input", function(event) {
+        if (phoneRegEx.test(event.target.value)) {
+            event.target.setCustomValidity("");
+        } else {
+            event.target.setCustomValidity("Not a valid phone number");
+        }
+    });
+    form.addEventListener("submit", function() {
+        form.reportValidity();
+    });
 }
