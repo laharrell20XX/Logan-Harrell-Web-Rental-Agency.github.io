@@ -18,7 +18,7 @@ function renderItemTemp() {
     var template = Handlebars.compile(source);
     var html = template(PAGE_DATA.storeItems);
     storeItemUl.insertAdjacentHTML("beforeend", html);
-    makeRentButtons(); //remakes the rent buttons everytime the template is rendered
+    makeRentButtons(); //remakes the rent buttons every time the template is rendered; important to show any changes in item stock
 }
 
 function clearTemp(element) {
@@ -30,8 +30,8 @@ function clearTemp(element) {
 function addEvents(listElm) {
     var button = listElm.querySelector("button");
     var formContainer = listElm.querySelector(".dropdown-form"); // turned buttons and object into set vars instead of reassigning them
-    // var object = getObjByName(listOfItems, button);
-    addFormEvents(formContainer.querySelector("form"));
+    var object = getObjByName(listOfItems, button);
+    addFormEvents(formContainer.querySelector("form"), formContainer, object);
     button.addEventListener("click", function() {
         closeOtherForms(formContainer);
         showDropdown(formContainer); // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
@@ -65,7 +65,7 @@ function closeOtherForms(cur_form) {
     }
 }
 
-function addFormEvents(form) {
+function addFormEvents(form, formContainer, object) {
     formElements = form.elements;
     nameRegEx = /^[A-Za-z](?=['-]*)(?=[^'-\s0-9]*$)/; // checks for (letter'-(optional)(letter/number))
     phoneRegEx = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/; //regression statements only work for America
@@ -76,6 +76,13 @@ function addFormEvents(form) {
             event.target.setCustomValidity(errorMsg);
         }
     }
+    function finishTransaction(formContainer, object) {
+        finishButton = formContainer.querySelector("button");
+        finishButton.addEventListener("click", function() {
+            rentItem(object);
+            renderItemTemp();
+        });
+    }
     formElements["first-name"].addEventListener("input", function(event) {
         checkValidity(event, nameRegEx, "Not a valid name");
     });
@@ -85,7 +92,12 @@ function addFormEvents(form) {
     formElements["phone"].addEventListener("input", function(event) {
         checkValidity(event, phoneRegEx, "Not a valid phone number");
     });
-    form.addEventListener("submit", function() {
-        form.reportValidity();
+    form.addEventListener("submit", function(event) {
+        if (form.reportValidity()) {
+            event.preventDefault();
+            formContainer.innerHTML =
+                '<h1 class="row m-0 receipt">Thank you!</h1>\n<button class="col">Finish</button>';
+            finishTransaction(formContainer, object);
+        }
     });
 }
