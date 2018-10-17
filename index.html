@@ -83,7 +83,7 @@
                 *tooltip doesn't work when button is disabled* -->
                 {{#if stock}}
                 <div class="rent-dropdown">
-                    <button type="button" title="{{stock}} left in stock" class="{{name}}-rental-button rent-button col-12" data-toggle="dropdown">Rent</button> <!-- creates a dropdown-menu for the contact info -->
+                    <button type="button" title="{{stock}} left in stock" class="{{name}}-rental-button rent-button col-12">Rent</button> <!-- creates a dropdown-menu for the contact info -->
                         <div class="contact-info dropdown-form hide py-2 px-4">
                             <form>
                                 <p>Contact Info</p>
@@ -94,11 +94,11 @@
                                         </div>
                                     <div class="form-group">
                                         <label for="last-name">Last Name:</label>
-                                        <input name="last-name" class="form-control" type="text" required placeholder="Doe">
+                                        <input id="last-name" name="last-name" class="form-control" type="text" required placeholder="Doe">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email </label>
-                                            <input class="col form-control" name="email" type="email" required placeholder="name@email.com">
+                                            <input id="email" class="col form-control" name="email" type="email" required placeholder="name@email.com">
                                         </div>
                                             <div class="form-group">
                                                 <label for="phone">Phone </label>
@@ -110,7 +110,7 @@
                                                 <fieldset class="form-group">
                                                     <legend>Form of Payment</legend>
                 
-                                                    <input class="" name="contact" type="radio">
+                                                    <input class="" name="contact" type="radio" checked>
                                                         <label class="mr-4" for="cash">Cash</label>
                 
                                                         <input class="" name="contact" type="radio">
@@ -120,7 +120,7 @@
                                                                 <label for="credit-card">Credit Card</label>
                                     </fieldset>
                 
-                                            <button type="submit">Submit</button>
+                                            <button class="col" type="submit">Submit</button>
                                 </form>
                         </div>
                     </div>
