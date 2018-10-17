@@ -69,26 +69,21 @@ function addFormEvents(form) {
     formElements = form.elements;
     nameRegEx = /^[A-Za-z](?=['-]*)(?=[^'-\s0-9]*$)/; // checks for (letter'-(optional)(letter/number))
     phoneRegEx = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/; //regression statements only work for America
-    formElements["first-name"].addEventListener("input", function(event) {
-        if (nameRegEx.test(event.target.value)) {
+    function checkValidity(event, regex, errorMsg) {
+        if (regex.test(event.target.value)) {
             event.target.setCustomValidity("");
         } else {
-            event.target.setCustomValidity("Not a valid name");
+            event.target.setCustomValidity(errorMsg);
         }
+    }
+    formElements["first-name"].addEventListener("input", function(event) {
+        checkValidity(event, nameRegEx, "Not a valid name");
     });
     formElements["last-name"].addEventListener("input", function(event) {
-        if (nameRegEx.test(event.target.value)) {
-            event.target.setCustomValidity("");
-        } else {
-            event.target.setCustomValidity("Not a valid name");
-        }
+        checkValidity(event, nameRegEx, "Not a valid name");
     });
     formElements["phone"].addEventListener("input", function(event) {
-        if (phoneRegEx.test(event.target.value)) {
-            event.target.setCustomValidity("");
-        } else {
-            event.target.setCustomValidity("Not a valid phone number");
-        }
+        checkValidity(event, phoneRegEx, "Not a valid phone number");
     });
     form.addEventListener("submit", function() {
         form.reportValidity();
