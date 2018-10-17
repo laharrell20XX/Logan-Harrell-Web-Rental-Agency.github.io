@@ -28,11 +28,13 @@ function clearTemp(element) {
 }
 
 function addEvent(listElm) {
-    var button = listElm.querySelector("button"); // turned buttons and object into set vars instead of reassigning them
-    var object = getObjByName(listOfItems, button);
+    var button = listElm.querySelector("button");
+    var form = listElm.querySelector(".dropdown-form"); // turned buttons and object into set vars instead of reassigning them
+    // var object = getObjByName(listOfItems, button);
     button.addEventListener("click", function() {
-        rentItem(object);
-        renderItemTemp(); // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
+        closeOtherForms(form);
+        showDropdown(form);
+        // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
     });
 }
 
@@ -44,5 +46,21 @@ function makeRentButtons() {
     var listElms = document.querySelectorAll("div.store-items li"); //adds events to all rent buttons
     for (listElm of listElms) {
         addEvent(listElm);
+    }
+}
+
+function showDropdown(form) {
+    form.classList.toggle("hide");
+    form.classList.toggle("show");
+}
+function closeOtherForms(cur_form) {
+    if (cur_form.classList.contains("show")) {
+        return;
+    } else {
+        var shownForm = document.querySelector(".dropdown-form.show");
+        if (shownForm) {
+            shownForm.classList.toggle("show");
+            shownForm.classList.toggle("hide");
+        }
     }
 }
