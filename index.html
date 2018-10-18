@@ -87,31 +87,32 @@
                         <div class="contact-info dropdown-form hide py-2 px-4">
                             <form class="row m-0">
                                 <legend>Contact Info</legend>
+                                <p class="required-legend"><span class="text-danger ml-1">* </span>required field</p>
                                     <div class="form-row">
                                         <div class="col">
-                                        <label for="first-name">First Name</label>
+                                        <label for="first-name">First Name<span class="required text-danger ml-1">*</span></label>
                                         <input class="form-control" name="first-name" type="text" required id="first-name" placeholder="John">
                                         </div>
                                         <div class="col">
-                                        <label for="last-name">Last Name</label>
+                                        <label for="last-name">Last Name<span class="required text-danger ml-1">*</span></label>
                                         <input id="last-name" name="last-name" class="form-control" type="text" required placeholder="Doe">
                                         </div>
                                     </div>
                                 <div class="form-row ml-0">
-                                    <label for="address">Address</label>
-                                    <input class="form-control">
+                                    <label for="address">Address<span class="required text-danger ml-1">*</span></label>
+                                    <input class="form-control" name="city" type="text" id="address" required>
                                 </div>
                                 <div class="form-row ml-0">
                                     <div class="col">
-                                        <label for="city">City</label>
+                                        <label for="city">City<span class="required text-danger ml-1">*</span></label>
                                         <input class="form-control" name="city" type="text" id="city" required placeholder="Pittsburgh">
                                     </div>
                                     <div class="col">
-                                        <label for="zip">Zip Code</label>
+                                        <label for="zip">Zip Code<span class="required text-danger ml-1">*</span></label>
                                         <input class="form-control" name="zip" type="text" id="zip-code" required placeholder="12345">
                                     </div>
                                     <div class="col-12">
-                                        <label for="state">State</label>
+                                        <label for="state">State<span class="required text-danger ml-1">*</span></label>
                                         <select class="form-control">
                                         <option value="">--Please select one--</option>
                                         <option value="AL">Alabama</option>
@@ -169,18 +170,18 @@
                                     </div>
                                 </div>
                                         <div class="form-row ml-0">
-                                            <label for="email">Email </label>
+                                            <label for="email">Email<span class="required text-danger ml-1">*</span></label>
                                             <input id="email" class="form-control" name="email" type="email" required placeholder="name@email.com">
                                         </div>
                                             <div class="form-row ml-0">
-                                                <label for="phone">Phone </label>
+                                                <label for="phone">Phone<span class="required text-danger ml-1">*</span></label>
                                                 <input class="form-control" name="phone" type="text" id="phone" placeholder="123-456-7890">
                                             </div>
                 
                                                 <div class="divider"></div>
                 
                                                 <fieldset class="form-row ml-0">
-                                                    <p class="col-12 mb-2">Form of Payment</p>
+                                                    <p class="col-12 mb-2">Form of Payment<span class="required text-danger ml-1">*</span></p>
                                                     <div class="col">
                                                     <input class="" name="contact" type="radio" checked>
                                                         <label class="" for="cash">Cash</label>
