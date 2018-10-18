@@ -70,7 +70,10 @@ function addFormEvents(form, formContainer, object) {
     nameRegEx = /^[A-Za-z](?=['-]*)(?=[^'-\s0-9]*$)/; // checks for (letter'-(optional)(letter/number))
     phoneRegEx = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/; //regression statements only work for America
     function checkValidity(event, regex, errorMsg) {
-        if (regex.test(event.target.value)) {
+        inputValue = event.target.value;
+        if (regex.test(inputValue.trim())) {
+            // double check for inputs with white space
+            inputValue = inputValue.trim();
             event.target.setCustomValidity("");
         } else {
             event.target.setCustomValidity(errorMsg);
@@ -91,6 +94,15 @@ function addFormEvents(form, formContainer, object) {
     });
     formElements["phone"].addEventListener("input", function(event) {
         checkValidity(event, phoneRegEx, "Not a valid phone number");
+    });
+    formElements["address"].addEventListener("input", function(event) {
+        checkValidity(event, /\w.*\w$/, "Not a valid address");
+    });
+    formElements["zip"].addEventListener("input", function(event) {
+        checkValidity(event, /[0-9]{5}/, "Not a valid zip code");
+    });
+    formElements["city"].addEventListener("input", function(event) {
+        checkValidity(event, /\w.*\w/, "Not a valid city name");
     });
     form.addEventListener("submit", function(event) {
         if (form.reportValidity()) {
