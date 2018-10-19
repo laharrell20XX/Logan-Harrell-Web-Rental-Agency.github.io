@@ -33,43 +33,8 @@
                     </div>
                 </nav>
             </div>
-            <div class="row ">
-                <div class="receipt col-sm-10 mx-auto">
-                    <!-- Should be moved to a template -->
-                    <div class="row">
-                        <div class="col col-lg-11 mr-auto">
-                            <h3 class="mb-4 text-center">Thanks! Here's your receipt</h3>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <ul class="col col-sm-9 mr-auto">
-                            <li class="row">
-                                <!-- Items in li need to be as far apart from each other as possible with slight margin between each item and its container -->
-                                <div class="col">
-                                    <p class="text-center">Thing 1:</p>
-                                </div>
-                                <div class="col">
-                                    <p class="text-right">$40.00</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col col-sm-9 mr-auto ">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="text-center">Total:</p>
-                                </div>
-                                <div class="col text-right">
-                                    <p>$40.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
 
 
             <div class="tab-content">
@@ -107,7 +72,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row modal fade" id="receipt" tabindex="-1">
+
+            </div>
     </main>
 
     <script id="store-item-temp" type="text/x-handlebars-template">
@@ -238,17 +205,69 @@
                                                     </div>
                                                 </fieldset>
                 
-                                            <button class="col-12" type="submit">Submit</button>
+                                            <button name="submit" class="col-12" type="submit">Submit</button>
                                 </form>
                         </div>
-                    </div>
+                        
+                        </div>
                 {{else}}
                 <button type="button" title="{{stock}} left in stock" class="{{name}}-rental-button rent-button" disabled>Cannot Rent</button>
                 <p class="mt-4 not-in-stock mb-2 text-danger">There are no more items left in stock to rent</p>
                 {{/if}}
-            </p>
-        </li>
         {{/each}}
+    </script>
+
+    <script id="receipt-temp" type="text/x-handlebars-template">
+
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="receipt col-sm-10 mx-auto">
+                        <!-- Should be moved to a template -->
+                        <div class="modal-header">
+                        <div class="row">
+                            <div class="col col-lg-11 mr-auto">
+                                <h3 class="mb-4 text-center modal-title">Thanks! Here's your receipt</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="divider"></div>
+                        <div class="row">
+                            <ul class="col col-sm-9 mr-auto">
+                                {{#each this}}
+                                <li class="row">
+                                    <!-- Items in li need to be as far apart from each other as possible with slight margin between each item and its container -->
+                                    <div class="col">
+                                        <p class="text-center">{{itemName}}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="text-right">${{itemPrice}}</p>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <div class="col col-sm-9 mr-auto ">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-center">Total:</p>
+                                    </div>
+                                    <div class="col text-right">
+                                        <p>{{calcTotal this}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                
     </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
