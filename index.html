@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
     <link rel="stylesheet" href="css/style.css">
     <!-- <script src="js/handlebars.js" defer></script> -->
@@ -24,11 +26,12 @@
             <div class="web-tabs">
                 <!-- nav bar will be a tab navbar-->
                 <nav>
-                    <div class="nav nav-tabs">
+                    <div class="nav nav-tabs py-3">
                         <a class="nav-item nav-link active border-0 mb-1" href="#home" data-toggle="tab">
-                            <p>Logan's Rentals</p>
+                            <p class="m-0">Logan's Rentals</p>
                         </a>
-                        <a class="nav-item nav-link px-5 border-0 mb-1" href="#store" data-toggle="tab">Store</a>
+                        <a class="nav-item nav-link px-5 border-0 mb-1" href="#store" data-toggle="tab">
+                            <i class="fas fa-ghost mr-2"></i>Store</a>
                         <!-- checkout and cart tabs will go here-->
                     </div>
                 </nav>
@@ -37,26 +40,27 @@
 
 
 
-            <div class="tab-content">
-                <div class="home-page tab-pane show active" id="home">
-                    <div>
-                        <h1 class="welcome">Welcome!</h1>
-                    </div>
-                    <div>
-                        <!-- future plans: make picture random (maybe template), make random slideshow of costume items -->
-                        <img alt="store-pic">
+            <div class="tab-content mt-5 ">
+                <div class="home-page tab-pane show active jumbotron" id="home">
+                    <div class="">
+                        <h1 class="welcome  mx-auto text-center display-4">Welcome to My Rental Store!</h1>
                     </div>
                     <div class="desc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut
-                            labore et dolore magna aliqua. Sed enim ut sem viverra aliquet eget sit amet tellus.
-                            Tempor
-                            orci dapibus ultrices in iaculis nunc sed. Purus sit amet luctus venenatis lectus
-                            magna.
-                            Eget
-                            arcu dictum varius duis.</p>
+                        <p class="lead">Welcome to Logan's Costume Shop! My costumes are all cheap to rent and so high
+                            quality, that
+                            no one will notice that you're wearing one! </p>
                     </div>
 
+                    <!-- future plans: make picture random (maybe template), make random slideshow of costume items -->
+                    <div class="d-flex">
+                        <div class="mx-auto mx-auto">
+                            <img src="images/shack.jpg" class="img-fluid" alt="store-pic" height="600" width="600">
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div>
+                        <p>Here is a picture of our current physical location </p>
+                    </div>
                 </div>
 
                 <div class="store-content tab-pane" id="store">
@@ -79,7 +83,7 @@
 
     <script id="store-item-temp" type="text/x-handlebars-template">
         {{#each this}}
-        <li class="card col-lg-4 col-sm-12 col-md-6 p-4">
+        <li class="card col-lg-4 col-sm-12 col-md-6 p-4 border-0">
             <!-- Make sure to change bottom/top margin on small screens for better viewing(or change margin on item name) -->
             <p class="title mx-auto">{{name}}</p>
             <img class="item-pic mx-auto" alt="costume pic">
