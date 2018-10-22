@@ -1,7 +1,7 @@
 .contact-info.hide {
     display: none;
 }
-.contact-info.show {
+.contact-info {
     display: block;
     position: absolute;
     z-index: 1;
@@ -37,6 +37,11 @@
 .rent-button:hover,
 .rent-button:focus {
     border: 1px solid #303036;
+}
+.rent-button:disabled {
+    background-color: rgba(47, 178, 226, 0.452);
+    color: rgba(0, 0, 0, 0.404);
+    border: 1px solid rgba(26, 113, 145, 0.74);
 }
 .home-page.jumbotron {
     background: rgba(128, 128, 128, 0.123);
