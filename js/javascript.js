@@ -1,4 +1,4 @@
-Handlebars.registerHelper("calcTotal", function(array) {
+Handlebars.registerHelper("calcTotal", function (array) {
     total = 0;
     for (var obj of array) {
         total += Number(obj.itemPrice);
@@ -48,7 +48,7 @@ function addEvents(listElm) {
     var formContainer = listElm.querySelector(".dropdown-form"); // turned buttons and object into set vars instead of reassigning them
     var object = getObjByName(listOfItems, button);
     addFormEvents(formContainer.querySelector("form"), object);
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
         closeOtherForms(formContainer);
         showDropdown(formContainer); // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
     });
@@ -87,7 +87,7 @@ function closeOtherForms(cur_form) {
 
 function addFormEvents(form, object) {
     formElements = form.elements;
-    nameRegEx = /^[A-Za-z](?=['-]*)(?=[^'-\s0-9]*$)/; // checks for (letter'-(optional)(letter/number))
+    nameRegEx = /[A-Za-z](?=[-'\s]*)(?=[^'-\s0-9]*$)/; // checks for (letter'-(optional)(letter/number))
     phoneRegEx = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/; //regression statements only work for America
     receipt = document.getElementById("receipt");
     function checkValidity(event, regex, errorMsg) {
@@ -103,29 +103,29 @@ function addFormEvents(form, object) {
     function finishTransaction(curReceipt) {
         PAGE_DATA.receipt = [];
         receiptButton = document.getElementById("show-receipt");
-        receiptButton.addEventListener("click", function() {
+        receiptButton.addEventListener("click", function () {
             renderReceiptTemp(curReceipt);
         });
     }
-    formElements["first-name"].addEventListener("input", function(event) {
+    formElements["first-name"].addEventListener("input", function (event) {
         checkValidity(event, nameRegEx, "Not a valid name");
     });
-    formElements["last-name"].addEventListener("input", function(event) {
+    formElements["last-name"].addEventListener("input", function (event) {
         checkValidity(event, nameRegEx, "Not a valid name");
     });
-    formElements["phone"].addEventListener("input", function(event) {
+    formElements["phone"].addEventListener("input", function (event) {
         checkValidity(event, phoneRegEx, "Not a valid phone number");
     });
-    formElements["address"].addEventListener("input", function(event) {
+    formElements["address"].addEventListener("input", function (event) {
         checkValidity(event, /\w.*\w$/, "Not a valid address");
     });
-    formElements["zip"].addEventListener("input", function(event) {
+    formElements["zip"].addEventListener("input", function (event) {
         checkValidity(event, /[0-9]{5}/, "Not a valid zip code");
     });
-    formElements["city"].addEventListener("input", function(event) {
+    formElements["city"].addEventListener("input", function (event) {
         checkValidity(event, /\w.*\w/, "Not a valid city name");
     });
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", function (event) {
         if (form.reportValidity()) {
             event.preventDefault();
 
