@@ -1,4 +1,4 @@
-Handlebars.registerHelper("calcTotal", function (array) {
+Handlebars.registerHelper("calcTotal", function(array) {
     total = 0;
     for (var obj of array) {
         total += Number(obj.itemPrice);
@@ -48,7 +48,7 @@ function addEvents(listElm) {
     var formContainer = listElm.querySelector(".dropdown-form"); // turned buttons and object into set vars instead of reassigning them
     var object = getObjByName(listOfItems, button);
     addFormEvents(formContainer.querySelector("form"), object);
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function() {
         closeOtherForms(formContainer);
         showDropdown(formContainer); // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
     });
@@ -91,41 +91,49 @@ function addFormEvents(form, object) {
     phoneRegEx = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/; //regression statements only work for America
     receipt = document.getElementById("receipt");
     function checkValidity(event, regex, errorMsg) {
-        inputValue = event.target.value;
-        if (regex.test(inputValue.trim())) {
+        var curFormElm = event.target;
+        var error = form.querySelector(
+            "p#" + event.target.getAttribute("name") + "-error"
+        );
+        error.innerText = errorMsg;
+        inputValue = curFormElm.value;
+        if (regex.test(inputValue.trim()) && inputValue) {
             // double check for inputs with white space
+            error.classList.add("hide");
             inputValue = inputValue.trim();
-            event.target.setCustomValidity("");
+            curFormElm.setCustomValidity("");
         } else {
-            event.target.setCustomValidity(errorMsg);
+            error.classList.remove("hide");
+            curFormElm.setCustomValidity(errorMsg);
         }
     }
     function finishTransaction(curReceipt) {
         PAGE_DATA.receipt = [];
         receiptButton = document.getElementById("show-receipt");
-        receiptButton.addEventListener("click", function () {
+        receiptButton.addEventListener("click", function() {
             renderReceiptTemp(curReceipt);
         });
     }
-    formElements["first-name"].addEventListener("input", function (event) {
-        checkValidity(event, nameRegEx, "Not a valid name");
+    formElements["name"].addEventListener("change", function(event) {
+        checkValidity(event, nameRegEx, "Please enter a valid name");
     });
-    formElements["last-name"].addEventListener("input", function (event) {
-        checkValidity(event, nameRegEx, "Not a valid name");
+    formElements["phone"].addEventListener("change", function(event) {
+        checkValidity(
+            event,
+            phoneRegEx,
+            "Please enter a valid phone number (e.g. 123-456-7890)"
+        );
     });
-    formElements["phone"].addEventListener("input", function (event) {
-        checkValidity(event, phoneRegEx, "Not a valid phone number");
+    formElements["address"].addEventListener("change", function(event) {
+        checkValidity(event, /\w.*/, "Please enter a valid address");
     });
-    formElements["address"].addEventListener("input", function (event) {
-        checkValidity(event, /\w.*\w$/, "Not a valid address");
+    formElements["zip"].addEventListener("change", function(event) {
+        checkValidity(event, /[0-9]{5}/, "Please enter a valid zip code");
     });
-    formElements["zip"].addEventListener("input", function (event) {
-        checkValidity(event, /[0-9]{5}/, "Not a valid zip code");
+    formElements["city"].addEventListener("change", function(event) {
+        checkValidity(event, /\w.*\w$/, "Please enter a valid city name");
     });
-    formElements["city"].addEventListener("input", function (event) {
-        checkValidity(event, /\w.*\w/, "Not a valid city name");
-    });
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", function(event) {
         if (form.reportValidity()) {
             event.preventDefault();
 
