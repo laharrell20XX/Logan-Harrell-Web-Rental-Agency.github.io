@@ -18,12 +18,13 @@
     margin-top: 2rem;
 }
 .web-tabs {
-    background-color: #E57544;
+    background-color: #e57544;
 }
 .web-tabs a {
-    color: rgba(255, 255, 255, 0.651)
-} 
-.web-tabs a.nav-link.active, .web-tabs a:hover {
+    color: rgba(255, 255, 255, 0.651);
+}
+.web-tabs a.nav-link.active,
+.web-tabs a:hover {
     background-color: transparent;
     color: white;
 }
@@ -31,11 +32,22 @@
     background-color: rgb(47, 178, 226);
     color: white;
     border: 1px solid rgb(26, 113, 145);
-    border-radius: 5px
+    border-radius: 5px;
 }
-.rent-button:hover, .rent-button:focus {
+.rent-button:hover,
+.rent-button:focus {
     border: 1px solid #303036;
 }
 .home-page.jumbotron {
-    background: rgba(128, 128, 128, 0.123)
+    background: rgba(128, 128, 128, 0.123);
+}
+p.error-msg {
+    color: red;
+}
+p.error-msg.hide {
+    display: none;
+}
+
+.form-row {
+    margin-top: 1.5rem;
 }
