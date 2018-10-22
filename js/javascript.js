@@ -47,11 +47,13 @@ function addEvents(listElm) {
     var button = listElm.querySelector("button");
     var formContainer = listElm.querySelector(".dropdown-form"); // turned buttons and object into set vars instead of reassigning them
     var object = getObjByName(listOfItems, button);
-    addFormEvents(formContainer.querySelector("form"), object);
-    button.addEventListener("click", function() {
-        closeOtherForms(formContainer);
-        showDropdown(formContainer); // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
-    });
+    if (formContainer) {
+        addFormEvents(formContainer.querySelector("form"), object);
+        button.addEventListener("click", function() {
+            closeOtherForms(formContainer); // closes other open forms before opening another form
+            showDropdown(formContainer); // re-rendering the templates gets rid of the button events (have to call makeRent Buttons again)
+        });
+    }
 }
 
 function rentItem(object) {
@@ -64,7 +66,7 @@ function rentItem(object) {
 
 function makeRentButtons() {
     var listElms = document.querySelectorAll("div.store-items li"); //adds events to all rent buttons
-    for (listElm of listElms) {
+    for (var listElm of listElms) {
         addEvents(listElm);
     }
 }
@@ -75,12 +77,14 @@ function showDropdown(form) {
 }
 function closeOtherForms(cur_form) {
     if (cur_form.classList.contains("show")) {
-        return;
+        // checks if the form the event was fired from is currently being shown
+        return; // rest of function will get ignored
     } else {
-        var shownForm = document.querySelector(".dropdown-form.show");
+        var shownForm = document.querySelector(".dropdown-form.show"); // collects any shown forms and stores them in a variable
         if (shownForm) {
-            shownForm.classList.toggle("show");
-            shownForm.classList.toggle("hide");
+            // checks if a shown form exists
+            shownForm.classList.toggle("show"); // removes the show class from the shown form
+            shownForm.classList.toggle("hide"); // adds the hide class to the shown form, hiding it
         }
     }
 }
