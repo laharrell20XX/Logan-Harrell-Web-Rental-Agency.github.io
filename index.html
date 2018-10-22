@@ -26,11 +26,11 @@
             <div class="web-tabs">
                 <!-- nav bar will be a tab navbar-->
                 <nav>
-                    <div class="nav nav-tabs py-3">
-                        <a class="nav-item nav-link active border-0 mb-1" href="#home" data-toggle="tab">
+                    <div class="nav nav-tabs py-2">
+                        <a class="nav-item nav-link active border-0 mb-1 mx-2" href="#home" data-toggle="tab">
                             <p class="m-0">Logan's Rentals</p>
                         </a>
-                        <a class="nav-item nav-link px-5 border-0 mb-1" href="#store" data-toggle="tab">
+                        <a class="nav-item nav-link border-0 mb-1 mx-2" href="#store" data-toggle="tab">
                             <i class="fas fa-ghost mr-2"></i>Store</a>
                         <!-- checkout and cart tabs will go here-->
                     </div>
@@ -99,32 +99,30 @@
                     <button type="button" title="{{stock}} left in stock" class="{{name}}-rental-button rent-button col-12">Rent</button> <!-- creates a dropdown-menu for the contact info -->
                         <div class="contact-info dropdown-form hide py-2 px-4">
                             <form class="row m-0">
-                                <legend>Contact Info</legend>
-                                <p class="required-legend"><span class="text-danger ml-1">* </span>required field</p>
-                                    <div class="form-row">
-                                        <div class="col">
-                                        <label for="first-name">First Name<span class="required text-danger ml-1">*</span></label>
-                                        <input class="form-control" name="first-name" type="text" required id="first-name" placeholder="John">
-                                        </div>
-                                        <div class="col">
-                                        <label for="last-name">Last Name<span class="required text-danger ml-1">*</span></label>
-                                        <input id="last-name" name="last-name" class="form-control" type="text" required placeholder="Doe">
-                                        </div>
+                                <legend class="col-12">Contact Info</legend>
+                                <p class="required-legend col-12"><span class="text-danger ml-1">* </span>required field</p>
+                                    <div class="form-row ml-0">
+                                        <label for="name">Name<span class="required text-danger ml-1">*</span></label>
+                                        <input class="form-control" name="name" type="text" required id="name" placeholder="John">
+                                    <p class="error-msg" id="name-error"></p>    
                                     </div>
                                 <div class="form-row ml-0">
                                     <label for="address">Address<span class="required text-danger ml-1">*</span></label>
                                     <input class="form-control" name="address" type="text" id="address" required placeholder="123 Main St.">
+                                <p class="error-msg" id="address-error"></p>
                                 </div>
                                 <div class="form-row ml-0">
-                                    <div class="col">
+                                    <div class="col pl-0">
                                         <label for="city">City<span class="required text-danger ml-1">*</span></label>
                                         <input class="form-control" name="city" type="text" id="city" required placeholder="Pittsburgh">
+                                    <p class="error-msg" id="city-error"></p>
                                     </div>
                                     <div class="col">
                                         <label for="zip">Zip Code<span class="required text-danger ml-1">*</span></label>
                                         <input class="form-control" name="zip" type="text" id="zip-code" required placeholder="12345">
+                                        <p class="error-msg" id="zip-error"></p>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 p-0">
                                         <label for="state">State<span class="required text-danger ml-1">*</span></label>
                                         <select class="form-control" required>
                                         <option value="">--Please select one--</option>
@@ -185,13 +183,15 @@
                                         <div class="form-row ml-0">
                                             <label for="email">Email<span class="required text-danger ml-1">*</span></label>
                                             <input id="email" class="form-control" name="email" type="email" required placeholder="name@email.com">
+                                            <p class="error-msg hide" id="email-error"></p>
                                         </div>
                                             <div class="form-row ml-0">
                                                 <label for="phone">Phone<span class="required text-danger ml-1">*</span></label>
                                                 <input class="form-control" name="phone" type="text" id="phone" placeholder="123-456-7890" required>
+                                                <p class="error-msg hide" id="phone-error">e.g 123-456-7890</p>
                                             </div>
                 
-                                                <div class="divider"></div>
+                                                <div class="divider col-12 ml-0"></div>
                 
                                                 <fieldset class="form-row ml-0">
                                                     <p class="col-12 mb-2">Form of Payment<span class="required text-danger ml-1">*</span></p>
