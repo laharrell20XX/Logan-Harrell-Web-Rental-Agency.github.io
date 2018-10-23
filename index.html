@@ -54,7 +54,7 @@
                     <!-- future plans: make picture random (maybe template), make random slideshow of costume items -->
                     <div class="d-flex">
                         <div class="mx-auto mx-auto">
-                            <img src="images/shack.jpg" class="img-fluid" alt="store-pic" height="600" width="600">
+                            <img src="images/warehouse 40.jpg" class="img-fluid" alt="store-pic" height="600" width="600">
                         </div>
                     </div>
                     <div class="divider"></div>
@@ -86,7 +86,7 @@
         <li class="card col-lg-4 col-sm-12 col-md-6 p-4 border-0">
             <!-- Make sure to change bottom/top margin on small screens for better viewing(or change margin on item name) -->
             <p class="title mx-auto">{{name}}</p>
-            <img class="item-pic mx-auto" alt="costume pic">
+            <img src="{{imageUrl}}" class="item-pic mx-auto" alt="costume pic" height="250" >
             <p class="desc mt-4">{{description}}</p>
             <p class="cost-rent">
                 <p>${{price}}</p>
@@ -209,7 +209,7 @@
                                                     </div>
                                                 </fieldset>
                 
-                                            <button name="submit" class="col-12" type="submit">Submit</button>
+                                            <button name="submit" class="col-12 submit" type="submit">Submit</button>
                                 </form>
                         </div>
                         
