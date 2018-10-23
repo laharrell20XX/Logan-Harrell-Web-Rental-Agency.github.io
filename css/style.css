@@ -36,7 +36,8 @@
 }
 .rent-button:hover,
 .rent-button:focus {
-    border: 1px solid #303036;
+    border: 1px solid #27272c;
+
 }
 .rent-button:disabled {
     background-color: rgba(47, 178, 226, 0.452);
@@ -55,4 +56,17 @@ p.error-msg.hide {
 
 .form-row {
     margin-top: 1.5rem;
+}
+
+button.submit {
+    background-color: #F4D35E;
+    border: 1px solid rgb(209, 181, 78);
+    border-radius: 5px;
+
+}
+button.submit:hover {
+    border-color: rgb(133, 112, 36);
+}
+input:invalid {
+    border: 1px solid rgb(238, 0, 0)
 }
